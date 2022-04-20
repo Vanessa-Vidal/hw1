@@ -110,19 +110,69 @@
 -- TODO!
 
 -- Prints a header for the movies output
-.print "Movies"
-.print "======"
-.print ""
+
 
 -- The SQL statement for the movies output
 -- TODO!
 
 -- Prints a header for the cast output
-.print ""
-.print "Top Cast"
-.print "========"
-.print ""
+
 
 
 -- The SQL statement for the cast output
 -- TODO!
+
+-- Creation of tables
+
+DROP TABLE IF EXISTS movies;
+DROP TABLE IF EXISTS actors;
+DROP TABLE IF EXISTS studios;
+DROP TABLE IF EXISTS Casts;
+
+CREATE TABLE movies (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  title TEXT,
+  year_released INTEGER,
+  studio_id INTEGER,
+  MPAA_rating TEXT
+);
+
+CREATE TABLE actors (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  first_name TEXT,
+  last_name TEXT
+);
+
+CREATE TABLE studios (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+);
+
+CREATE TABLE casts (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  actor_id INTEGER,
+  movie_id INTEGER,
+  character_name INTEGER
+);
+
+-- Insertion of data
+
+INSERT INTO movies (
+    
+)
+VALUES (
+    
+);
+
+
+
+-- Creation of visualization
+
+.print "Movies"
+.print "======"
+.print ""
+
+.print ""
+.print "Top Cast"
+.print "========"
+.print ""
