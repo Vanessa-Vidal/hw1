@@ -130,7 +130,8 @@
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS actors;
 DROP TABLE IF EXISTS studios;
-DROP TABLE IF EXISTS Casts;
+DROP TABLE IF EXISTS characters;
+DROP TABLE IF EXISTS casts;
 
 CREATE TABLE movies (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -153,7 +154,7 @@ CREATE TABLE studios (
 CREATE TABLE characters (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT
-)
+);
 
 CREATE TABLE casts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -213,67 +214,7 @@ INSERT INTO casts (
     actor_id,
     character_id
 )
-VALUES (
-    1,
-    1,
-    1
-),
-    (1,
-    2,
-    2
-),
-    (1,
-    3,
-    3
-),
-    (1,
-    4,
-    4
-),
-    (1,
-    5,
-    5
-),
-    (2,
-    1,
-    1
-
-    (2,
-    6,
-    6
-),
-    (2,
-    7,
-    7
-),
-    (2,
-    2,
-    2
-),
-    (2,
-    8,
-    4
-),
-    (3,
-    1,
-    1
-),
-    (3,
-    5,
-    5
-),
-    (3,
-    9,
-    8
-),
-    (3,
-    10,
-    9
-),
-    (3,
-    11,
-    10
-);
+VALUES (1,1,1),(1,2,2),(1,3,3),(1,4,4),(1,5,5),(2,1,1),(2,6,6),(2,7,7),(2,2,2),(2,8,4),(3,1,1),(3,5,5),(3,9,8),(3,10,9),(3,11,10);
 
 -- Creation of visualization
 
@@ -285,8 +226,8 @@ SELECT movies.title, movies.year_released, movies.MPAA_rating, studios.name
 FROM movies INNER JOIN studios
 ON movies.studio_id=studios.id;
 
-
 .print ""
 .print "Top Cast"
 .print "========"
 .print ""
+
