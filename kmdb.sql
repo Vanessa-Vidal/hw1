@@ -124,6 +124,9 @@
 
 -- Creation of tables
 
+.mode column
+.headers off
+
 DROP TABLE IF EXISTS movies;
 DROP TABLE IF EXISTS actors;
 DROP TABLE IF EXISTS studios;
@@ -139,8 +142,7 @@ CREATE TABLE movies (
 
 CREATE TABLE actors (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  first_name TEXT,
-  last_name TEXT
+  full_name TEXT
 );
 
 CREATE TABLE studios (
@@ -148,29 +150,141 @@ CREATE TABLE studios (
   name TEXT
 );
 
+CREATE TABLE characters (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT
+)
+
 CREATE TABLE casts (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  actor_id INTEGER,
   movie_id INTEGER,
-  character_name INTEGER
+  actor_id INTEGER,
+  character_id INTEGER
 );
 
 -- Insertion of data
 
 INSERT INTO movies (
-    
+    title,
+    year_released,
+    studio_id,
+    MPAA_rating
 )
 VALUES (
-    
+    "Batman Begins",
+    2005,
+    1,
+    "PG-13"
+),
+    ("The Dark Knight",
+    2008,
+    1,
+    "PG-13"
+),
+
+    ("The Dark Knight Rises",
+    2012,
+    1,
+    "PG-13"
 );
 
+INSERT INTO actors (
+    full_name
+)
+VALUES (
+    "Christian Bale"),("Michael Cane"), ("Liam Neeson"),("Katie Holmes"),
+    ("Gary Oldman"),("Heath Ledger"),("Aaron Eckhart"),("Maggie Gyllenhaal"),
+    ("Tom Hardy"),("Joseph Gordon-Levitt"),("Anne Hathaway");
 
+INSERT INTO studios (
+    name
+)
+VALUES (
+    "Warner Bros."
+);
+
+INSERT INTO characters (
+    name
+)
+VALUES ("Bruce Wayne"),("Alfred"),("Ra's Al Ghul"),("Rachel Dawes"),("Commissioner Gordon"),("Joker"),("Harvey Dent"),("Bane"),("John Blake"),("Selina Kyle");
+
+INSERT INTO casts (
+    movie_id,
+    actor_id,
+    character_id
+)
+VALUES (
+    1,
+    1,
+    1
+),
+    (1,
+    2,
+    2
+),
+    (1,
+    3,
+    3
+),
+    (1,
+    4,
+    4
+),
+    (1,
+    5,
+    5
+),
+    (2,
+    1,
+    1
+
+    (2,
+    6,
+    6
+),
+    (2,
+    7,
+    7
+),
+    (2,
+    2,
+    2
+),
+    (2,
+    8,
+    4
+),
+    (3,
+    1,
+    1
+),
+    (3,
+    5,
+    5
+),
+    (3,
+    9,
+    8
+),
+    (3,
+    10,
+    9
+),
+    (3,
+    11,
+    10
+);
 
 -- Creation of visualization
 
 .print "Movies"
 .print "======"
 .print ""
+
+SELECT movies.title, movies.year_released, movies.MPAA_rating, studios.name
+FROM movies INNER JOIN studios
+ON movies.studio_id=studios.id;
+
 
 .print ""
 .print "Top Cast"
