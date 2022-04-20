@@ -231,3 +231,6 @@ ON movies.studio_id=studios.id;
 .print "========"
 .print ""
 
+SELECT movies.title, actors.full_name, characters.name
+FROM casts INNER JOIN movies INNER JOIN actors INNER JOIN characters
+ON casts.movie_id=movies.id AND casts.actor_id=actors.id AND casts.character_id=characters.id
