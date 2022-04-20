@@ -137,8 +137,8 @@ CREATE TABLE movies (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
   title TEXT,
   year_released INTEGER,
-  studio_id INTEGER,
-  MPAA_rating TEXT
+  MPAA_rating TEXT,
+  studio_id INTEGER
 );
 
 CREATE TABLE actors (
@@ -168,25 +168,25 @@ CREATE TABLE casts (
 INSERT INTO movies (
     title,
     year_released,
-    studio_id,
-    MPAA_rating
+    MPAA_rating,
+    studio_id    
 )
 VALUES (
     "Batman Begins",
     2005,
-    1,
-    "PG-13"
+    "PG-13",
+    1
 ),
     ("The Dark Knight",
     2008,
-    1,
-    "PG-13"
+    "PG-13",
+    1
 ),
 
     ("The Dark Knight Rises",
     2012,
-    1,
-    "PG-13"
+    "PG-13",
+    1
 );
 
 INSERT INTO actors (
@@ -233,4 +233,4 @@ ON movies.studio_id=studios.id;
 
 SELECT movies.title, actors.full_name, characters.name
 FROM casts INNER JOIN movies INNER JOIN actors INNER JOIN characters
-ON casts.movie_id=movies.id AND casts.actor_id=actors.id AND casts.character_id=characters.id
+ON casts.movie_id=movies.id AND casts.actor_id=actors.id AND casts.character_id=characters.id;
